@@ -1,0 +1,33 @@
+body{
+    background-color: lavender;
+    width: 1000px;
+    margin: 0 auto;
+}
+/*
+header{
+    top:0;
+    position: absolute;
+}
+
+nav{
+    top:0;
+    position:relative;
+}
+*/
+
+#header_canvas{
+    border: solid black;
+    width: inherit;
+}
+
+footer {
+    bottom: 0;
+    position:absolute;
+    background-color: lightgray;
+    width: inherit;
+    z-index: 10;
+}
+
+main{
+    background-color: beige;
+}
