@@ -3,18 +3,6 @@ body{
     width: 1000px;
     margin: 0 auto;
 }
-/*
-header{
-    top:0;
-    position: absolute;
-}
-
-nav{
-    top:0;
-    position:relative;
-}
-
-*/
 
 #header_canvas{
     display: block;
@@ -32,8 +20,19 @@ footer {
     font-size: 0.8em;
 }
 
+nav{
+    margin:10px;
+}
 
+nav > a{
+    margin:5px;
+}
 
 main{
     background-color: beige;
+    padding:3px 10px;
+}
+
+main > h1{
+    margin:5px 0;
 }
