@@ -36,3 +36,32 @@ main{
 main > h1{
     margin:5px 0;
 }
+
+.col {
+	box-sizing: border-box;
+	float: left;
+	padding: 5px;
+}
+
+.col1of3 {
+    width: 33%;
+}
+
+.col2of3 {
+    width: 66%;
+}
+
+.col3of3 {
+    width: 100%;
+}
+
+.row {
+}
+
+.row:after {
+    content: "";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+}
