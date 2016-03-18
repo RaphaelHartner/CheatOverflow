@@ -42,7 +42,7 @@ nav > ul > li{
 main{
     background-color: beige;
     padding:3px 10px;
-    width:1000px;
+    width:90 %;
     margin:0 auto;
 }
 header{
@@ -81,4 +81,16 @@ main > h1{
     display: block;
     visibility: hidden;
     height: 0;
+}
+
+@media all and (max-width: 800px) {
+    .col1of2xs {
+        width: 50%;
+    }
+}
+
+@media all and (max-width: 400px) {
+    .colxs {
+        width: 100%;
+    }
 }
