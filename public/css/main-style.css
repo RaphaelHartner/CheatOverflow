@@ -1,6 +1,6 @@
 body{
     background-color: lavender;
-    width: 1000px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -10,14 +10,16 @@ body{
 }
 
 footer {
-    bottom: 0;
-    position:absolute;
     width: inherit;
+    bottom: 0;
+    position:fixed;
+
     z-index: 10;
     text-align: center;
     background-color:lightgray;
     padding:10px;
     font-size: 0.8em;
+
 }
 
 nav{
@@ -28,11 +30,27 @@ nav > a{
     margin:5px;
 }
 
+
+.vertical-nav > ul{
+
+    list-style-type: none;
+    padding:0;
+    float:left;
+
+}
+
 main{
     background-color: beige;
     padding:3px 10px;
+    width:1000px;
+    margin:0 auto;
+}
+header{
+    width:1000px;
+    margin:0 auto;
 }
 
 main > h1{
     margin:5px 0;
 }
+
