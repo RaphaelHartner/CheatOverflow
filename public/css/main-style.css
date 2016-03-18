@@ -26,8 +26,8 @@ nav{
     margin:10px;
 }
 
-nav > a{
-    margin:5px;
+nav > ul > li{
+    margin:15px;
 }
 
 
