@@ -26,19 +26,6 @@ nav{
     margin:10px;
 }
 
-nav > ul > li{
-    margin:15px;
-}
-
-
-.vertical-nav > ul{
-
-    list-style-type: none;
-    padding:0;
-    float:left;
-
-}
-
 main{
     background-color: beige;
     padding:3px 10px;
@@ -52,6 +39,29 @@ header{
 
 main > h1{
     margin:5px 0;
+}
+
+
+ul#menu {
+	margin: 0px;
+}
+
+ul#menu li {
+    display: inline;
+}
+
+ul#menu li a {
+    background-color: black;
+    color: orange;
+    border-radius: 8px 8px 0 0;
+	text-decoration: none;
+	padding: 10px 20px;
+	margin: 0px;
+}
+
+ul#menu li a:hover {
+	color: black;
+    background-color: orange;
 }
 
 .col {
@@ -72,9 +82,13 @@ main > h1{
     width: 100%;
 }
 
-.row {
+.dropbtn {
+	visibility: hidden;
 }
 
+.row {
+}
+/* Clearfix */
 .row:after {
     content: "";
     clear: both;
@@ -83,14 +97,88 @@ main > h1{
     height: 0;
 }
 
-@media all and (max-width: 800px) {
+/* Size: middle */
+@media all and (max-width: 1024px) {
+	nav {
+		width: 30%;
+	}
+	
+	.content {
+		width: 100%;
+	}
+	
     .col1of2xs {
-        width: 50%;
+        width: 35%;
     }
+	
+	.col2of2xs {
+        width: 100%;
+    }
+	
+	.vertical-nav > ul{
+		list-style-type: none;
+		padding:0;
+		float:left;
+	}
+	
+	ul#menu li {
+		display: block;
+		margin: 20px;
+	}
+
+	ul#menu li a {
+		background-color: black;
+		color: orange;
+		text-decoration: none;
+		border-radius: 0px;
+		padding: 10px 20px;
+		margin: 0px;
+	}
+
+	ul#menu li a:hover {
+		color: black;
+		background-color: orange;
+	}
 }
 
-@media all and (max-width: 400px) {
+/* Size: small */
+@media all and (max-width: 800px) {
+	nav {
+		margin: 0px 10px;
+	}
+	
     .colxs {
         width: 100%;
     }
+	
+	.dropbtn {
+		visibility: visible;
+		background-color: black;
+		color: orange;
+		padding: 10px 20px;
+		border-radius: 8px 8px 0 0;
+		border: none;
+	}
+	
+	.dropdown {
+		display: inline-block;
+	}
+	
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: beige;
+		box-shadow: 12px 12px 12px 12px rgba(0,0,0,0.5);
+	}
+	
+	.dropdown:hover .dropdown-content {
+		display: block;
+	}
+	
+	.dropdown:hover .dropbtn {
+		background-color: orange;
+		color: black;
+	}
 }
+
+

@@ -12,32 +12,43 @@
     <header>
         <canvas id="header_canvas"></canvas>
     </header>
-    <nav>
-        <a href="index.html" target="_self">Homepage</a>
-        <a href="html/about_us.html" target="_self">About Us</a>
-        <a href="html/about_stackoverflow.html" target="_self">About Stackoverflow</a>
-    </nav>
-    <main class="row">
-        <h2>Recent activty in StackOverflow</h2>
-		<section  class="col col1of3 col1of2xs colxs">
-			<p>
-				<em>The 5 most recent Questions about JSON:</em>
-			</p>
-			<section id="resentJSONquestions"></section>
-		</section>
-		<section class="col col1of3 col1of2xs colxs">
-			<p>
-				<em>The 5 most recent Questions about JavaScript:</em>
-			</p>
-			<section id="resentJavaScriptQuestions"></section>
-		</section>
-		<section class="col col1of3 col1of2xs colxs">
-			<p>
-				<em>The 5 most recent Questions about HTML5:</em>
-			</p>
-			<section id="resentHTMLquestions"></section>
-		</section>
-    </main>
+	<div class="row">
+		<nav class="vertical-nav dropdown">
+			<button class="dropbtn">Menü</button>
+			<ul id="menu" class="dropdown-content">
+				<li>
+					<a href="index.html" target="_self">Homepage</a>
+				</li>
+				<li>
+					<a href="html/about_us.html" target="_self">About Us</a>
+				</li>
+				<li>
+					<a href="html/about_stackoverflow.html" target="_self">About Stackoverflow</a>
+				</li>
+			</ul>
+		</nav>
+		<main class="row">
+			<h2>Recent activty in StackOverflow</h2>
+			<section  class="col col1of3 col1of2xs colxs">
+				<p>
+					<em>The 5 most recent Questions about JSON:</em>
+				</p>
+				<section id="resentJSONquestions"></section>
+			</section>
+			<section class="col col1of3 col1of2xs colxs">
+				<p>
+					<em>The 5 most recent Questions about JavaScript:</em>
+				</p>
+				<section id="resentJavaScriptQuestions"></section>
+			</section>
+			<section class="col col1of3 col1of2xs colxs">
+				<p>
+					<em>The 5 most recent Questions about HTML5:</em>
+				</p>
+				<section id="resentHTMLquestions"></section>
+			</section>
+		</main>
+	</div>
     <footer>
         copyrights by AdeHar
     </footer>
