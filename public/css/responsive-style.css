@@ -65,4 +65,8 @@
     ul#menu li a {
         border-radius: 0;
     }
+
+    #img-responsive{
+        margin:0 25px;
+    }
 }
