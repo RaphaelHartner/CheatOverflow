@@ -32,7 +32,7 @@ function animateHeader() {
 function redraw(){
     // not possible in css, because it will be handled like an image
     // therefore it doesn't changes the size of the coordination system
-    canvas.width = 400;
+    canvas.width = 350;
     canvas.height = 50;
     setContexProperties();
     x = (canvas.width / 2) - (ctx.measureText(txt).width + ctx.lineWidth*txt.length) / 2;
