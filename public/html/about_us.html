@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <title>About us</title>
     <link rel="stylesheet" type="text/css" href="../css/main-style.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive-style.css">
     <script src="../js/jquery-2.2.1.min.js" defer></script>
     <script src="../js/header-animation.js" defer></script>
+    <script src="../js/shake.js" defer></script>
+    <script src="../js/shake-me-home.js" defer></script>
 </head>
 <body>
     <header>
         <canvas id="header_canvas"></canvas>
     </header>
-    <nav class="vertical-nav">
-        <ul>
+    <nav class="vertical-nav dropdown">
+        <button class="dropbtn">Menü</button>
+        <ul id="menu" class="dropdown-content">
             <li>
                 <a href="../index.html" target="_self">Homepage</a>
             </li>
@@ -24,16 +28,28 @@
             </li>
         </ul>
     </nav>
-    <main>
-        <h1>About us</h1>
-        <h4>This is the about-page from the developers of this excellent website!</h4>
-        <p>
-            Awesome cheat site, where you have access to thousands or better to say millions of articles of the famous stackoverflow forum!!!<br>
-            Admit it, you have waited for such a fascinating and unbelievable site since you are alive.
-        </p>
-        <p>
-            You can also download your favorite question and save it locally. Because of that you have access even when you are offline!
-        </p>
+    <main class="row">
+        <h2>About us</h2>
+        <section class="col col1of3 colxs">
+            <figure id="img-responsive">
+                <img src="../img/responsive-web-design.png" alt="Responsive-Web-Design"/>
+                <figcaption>Source: <a href="http://www.purelybranded.com/insights/responsive-web-design-a-quick-overview/" target="_blank">purelybranded</a></figcaption>
+            </figure>
+
+        </section>
+        <section class="col col2of3 colxs">
+            <h4>This is the about-page from the developers of this excellent website!</h4>
+            <p>
+                Awesome cheat site, where you have access to thousands or better to say millions of articles of the famous stackoverflow forum!!!<br>
+                Admit it, you have waited for such a fascinating and unbelievable site since you are alive.
+            </p>
+            <p>
+                You can also download your favorite question and save it locally. Because of that you have access even when you are offline!
+            </p>
+            <p>
+                Because of the responsive design, you can use this site on every devise!
+            </p>
+        </section>
     </main>
     <footer>
         copyrights by AdeHar
