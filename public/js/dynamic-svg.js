@@ -10,7 +10,7 @@ function TransformMatrix(a, b, c, d, e, f) {
 }
 
 TransformMatrix.prototype.toString = function matrixToString() {
-    return  "matrix(" + this.a.toString() + ", " + this.b.toString() + ", " + this.c.toString() + ", " + this.d.toString() + ", " + this.e.toString() + ", " + this.f.toString() + ")";
+    return  "matrix(" + this.a + ", " + this.b + ", " + this.c + ", " + this.d + ", " + this.e + ", " + this.f + ")";
 };
 
 function startTransformation(){
