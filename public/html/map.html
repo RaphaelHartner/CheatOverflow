@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CheatOverflow - Map</title>
+    <link rel="stylesheet" type="text/css" href="../css/main-style.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive-style.css">
+    <link rel="stylesheet" type="text/css" href="../css/map.css">
+    <script type="text/javascript" src="../js/lib/jquery-2.2.1.min.js" defer></script>
+    <script type="text/javascript" src="../js/animation/header-animation.js" defer></script>
+    <script type="text/javascript" src="../js/shake/shake.js" defer></script>
+    <script type="text/javascript" src="../js/shake/shake-me-home.js" defer></script>
+    <script type="text/javascript" src="http://www.openlayers.org/api/OpenLayers.js" defer></script>
+    <script type="text/javascript" src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js" defer></script>
+    <script type="text/javascript" src="../js/map/location-handler.js" defer></script>
+    <script type="text/javascript" src="../js/map/map.js" defer></script>
+</head>
+<body>
+    <header>
+        <canvas id="header_canvas"></canvas>
+    </header>
+    <nav class="vertical-nav dropdown">
+        <button class="dropbtn">Menü</button>
+        <ul id="menu" class="dropdown-content">
+            <li>
+                <a href="../index.html" target="_self">Homepage</a>
+            </li>
+            <li>
+                <a href="about_us.html" target="_self">About Us</a>
+            </li>
+            <li>
+                <a href="about_stackoverflow.html" target="_self">About Stackoverflow</a>
+            </li>
+            <li>
+                <a href="map.html" target="_self">Map</a>
+            </li>
+        </ul>
+    </nav>
+    <main class="row">
+        <section class="row">
+        <h2>Map Function</h2>
+            <section class="col">
+                <h4>
+                    Add new addresses
+                </h4>
+                <section id="addAddress">
+                    <label class="mapLabels" for="displayName">Display name: </label><input id="displayName" type="text">
+                    <br>
+                    <label class="mapLabels" for="city">City: </label><input id="city" type="text">
+                    <br>
+                    <label class="mapLabels" for="street">Street: </label><input id="street" type="text">
+                    <br>
+                    <label class="mapLabels" for="houseNumber">House number: </label><input id="houseNumber" type="text">
+                    <br>
+                    <input id="deleteLocation" type="button" value="Delete">
+                    <input id="saveLocation" type="button" value="Save">
+                </section>
+            </section>
+            <section class="col">
+                <h4>
+                   Current saved locations
+                </h4>
+                <section id="currentAddresses">
+                    <ol id="locationList">
+
+                    </ol>
+                </section>
+            </section>
+        </section>
+        <div id="map"></div>
+    </main>
+<footer>
+    copyrights by AdeHar
+</footer>
+</body>
+</html>
