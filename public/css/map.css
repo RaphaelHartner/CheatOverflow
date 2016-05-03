@@ -17,6 +17,7 @@
     display:inline-block;
 }
 
-#saveAddress{
-
+.location:hover{
+    background-color: lightblue;
+    cursor: pointer;
 }
