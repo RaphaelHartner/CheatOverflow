@@ -19,7 +19,21 @@
         var city =  $("#city").val();
         var street =  $("#street").val();
         var houseNumber=  $("#houseNumber").val();
+
+
+
+        var position;
+
+        var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+        var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+        position       = new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude).transform( fromProjection, toProjection);
+
+
+
         var currentLocation  = {"displayName": displayName, "city":city, "street": street, "houseNumber":houseNumber};
+
+
+
 
         locations.push(currentLocation);
 

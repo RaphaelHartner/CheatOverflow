@@ -26,14 +26,24 @@
         map.addLayer(mapnik);
         map.setCenter(position, zoom );
 
-        setMarkers();
+        setMarkers(position);
     }
 
-    function setMarkers(){
+    function setMarkers(position){
         
         var markers = new OpenLayers.Layer.Markers("Markers");
         map.addLayer(markers);
         markers.addMarker(new OpenLayers.Marker(position));
+    }
+
+    function convertAddressToPosition(addr){
+        $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + addr.value, function(data){
+            return data;
+        });
+    }
+
+    function getFormattedAddress(location){
+
     }
 }());
 
