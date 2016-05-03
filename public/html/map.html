@@ -13,7 +13,6 @@
     <script type="text/javascript" src="../js/shake/shake-me-home.js" defer></script>
     <script type="text/javascript" src="http://www.openlayers.org/api/OpenLayers.js" defer></script>
     <script type="text/javascript" src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js" defer></script>
-    <script type="text/javascript" src="../js/lib/leaflet.js" defer></script>
     <script type="text/javascript" src="../js/map/location-handler.js" defer></script>
     <script type="text/javascript" src="../js/map/map.js" defer></script>
 </head>
@@ -46,13 +45,9 @@
                     Add new addresses
                 </h4>
                 <section id="addAddress">
-                    <label class="mapLabels" for="displayName">Display name: </label><input id="displayName" type="text">
+                    <label class="mapLabels" for="locationName">Location name: </label><input id="locationName" class="mapInput" type="text">
                     <br>
-                    <label class="mapLabels" for="city">City: </label><input id="city" type="text">
-                    <br>
-                    <label class="mapLabels" for="street">Street: </label><input id="street" type="text">
-                    <br>
-                    <label class="mapLabels" for="houseNumber">House number: </label><input id="houseNumber" type="text">
+                    <label class="mapLabels" for="fieldName">Field name: </label><input id="fieldName" class="mapInput" type="text">
                     <br>
                     <input id="deleteLocation" type="button" value="Delete">
                     <input id="saveLocation" type="button" value="Save">

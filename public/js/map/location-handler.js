@@ -7,6 +7,11 @@
     $("#deleteLocation").on("click", deleteCurrentLocation);
     refreshLocationList();
 
+    /*
+        example for a valid location
+            locationName="FH Joanneum Kapfenberg",
+            fieldName="IT"
+     */
     function saveCurrentLocation(){
 
         var locations = [];
@@ -15,35 +20,31 @@
             locations = JSON.parse(localStorage["locations"]);
         }
 
-        var displayName =  $("#displayName").val();
-        var city =  $("#city").val();
-        var street =  $("#street").val();
-        var houseNumber=  $("#houseNumber").val();
+        var locationName = $("#locationName").val();
+        var fieldName = $("#fieldName").val();
+        var currentLocation  = {"locationName": locationName, "fieldName":fieldName};
+        var searchURL = 'http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + currentLocation.locationName;
+        
+        $.getJSON(searchURL, function(data){
 
+            var position = data[0];
+            var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+            var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+            position = new OpenLayers.LonLat(position.lon, position.lat).transform( fromProjection, toProjection);
 
+            currentLocation["position"] = position;
+            locations.push(currentLocation);
 
-        var position;
+            localStorage["locations"] = JSON.stringify(locations); //save current location
+            console.log("Saved location: " + JSON.stringify(currentLocation));
+            refreshLocationList();
 
-        var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-        var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-        position       = new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude).transform( fromProjection, toProjection);
-
-
-
-        var currentLocation  = {"displayName": displayName, "city":city, "street": street, "houseNumber":houseNumber};
-
-
-
-
-        locations.push(currentLocation);
-
-        localStorage["locations"] = JSON.stringify(locations);
-        console.log("Saved location: " + JSON.stringify(currentLocation));
-        refreshLocationList();
+            return data;
+        });
     }
 
     function deleteCurrentLocation(){
-        // if there are more than one locations with the same display name
+        // if there are more than one locations with the same name
         // only one of them will be deleted
 
         var storage =localStorage["locations"];
@@ -51,8 +52,8 @@
             return;
         }
 
-        var displayName =  $("#displayName").val();
-        var location = getLocationByDisplayName(displayName);
+        var locationName =  $("#locationName").val();
+        var location = getLocationByName(locationName);
         if(location == null){
             return;
         }
@@ -75,9 +76,9 @@
         locations.forEach(function(location){
 
             var node = document.createElement("LI");
-            var textNode = document.createTextNode(location.displayName);
+            var textNode = document.createTextNode(location.locationName + ", " + location.fieldName);
             var att = document.createAttribute("id");
-            att.value = location.displayName;
+            att.value = location.locationName;
             var classAtt = document.createAttribute("class");
             classAtt.value = "location";
 
@@ -85,24 +86,20 @@
             node.setAttributeNode(att);
             node.appendChild(textNode);
             $("#locationList").append(node);
-
         });
-
     }
 
     $(document).on("click", ".location", function() {
-        var location = getLocationByDisplayName(this.id);
+        var location = getLocationByName(this.id);
         if(location == null){
             return;
         }
 
-        $("#displayName").val(location.displayName);
-        $("#city").val(location.city);
-        $("#street").val(location.street);
-        $("#houseNumber").val(location.houseNumber);
+        $("#locationName").val(location.locationName);
+        $("#fieldName").val(location.fieldName);
     });
 
-    function getLocationByDisplayName(displayName){
+    function getLocationByName(name){
 
         var storage = localStorage["locations"];
         var l = null;
@@ -113,13 +110,12 @@
 
         var locations = JSON.parse(storage);
         locations.forEach(function(location){
-            if(location.displayName === displayName){
+            if(location.locationName === name){
                 l = location;
             }
         });
         return l;
     }
-
 }());
 
 
