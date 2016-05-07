@@ -6,6 +6,7 @@
 
 (function(){
     console.log("initialized map.js");
+
     var map;
     initializeMap();
 

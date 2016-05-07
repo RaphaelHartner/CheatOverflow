@@ -33,7 +33,7 @@ function loadJSONQuestions() {
 			questions.forEach(function(question) {
 				document.getElementById("resentJSONquestions").innerHTML += question.toString();
 			});
-		};
+		}
 	};	
 	xhttp.send();
 }
@@ -54,7 +54,7 @@ function loadJavaScriptQuestions() {
 			questions.forEach(function(question) {
 				document.getElementById("resentJavaScriptQuestions").innerHTML += question.toString();
 			});
-		};
+		}
 	};	
 	xhttp.send();
 }
@@ -75,7 +75,7 @@ function loadHTMLQuestions() {
 			questions.forEach(function(question) {
 				document.getElementById("resentHTMLquestions").innerHTML += question.toString();
 			});
-		};
+		}
 	};	
 	xhttp.send();
 }
@@ -88,4 +88,4 @@ function Question(id, title, link) {
 
 Question.prototype.toString = function() {
 	return this.title + ": " + "  <a href=\"" + this.link + "\" target=\"_blank\">zur Frage</a>" + "<br />";
-}
+};

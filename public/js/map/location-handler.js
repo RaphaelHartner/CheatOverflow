@@ -2,10 +2,41 @@
 
 (function(){
     console.log("initialized address handler");
+    document.getElementById("stackexSite").innerHTML = '<option value="none">Noch nichts geladen...</option>';
 
     $("#saveLocation").on("click", saveCurrentLocation);
     $("#deleteLocation").on("click", deleteCurrentLocation);
+    loadStackExchangeSites();
     refreshLocationList();
+
+    function loadStackExchangeSites() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "https://api.stackexchange.com/2.2/sites?key=bF8kysNL8Z2W7K5llHJgGg((", false);
+        xhttp.onreadystatechange = function() {
+            if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status <300)) {
+
+                var seSites = [];
+                var items = JSON.parse(xhttp.responseText).items;
+                for (var i = 0; i < items.length; i++) {
+
+                    if(items[i].site_type == 'main_site') {
+                        seSites.push(new StackSite(items[i].name, items[i].api_site_parameter));
+                    }
+                }
+
+                document.getElementById("stackexSite").innerHTML = '';
+                seSites.forEach(function(site) {
+                    document.getElementById("stackexSite").innerHTML += '<option value="' + site.apiParam + '">' + site.title + '</option>';
+                });
+            }
+        };
+        xhttp.send();
+    }
+
+    function StackSite(title, apiParam) {
+        this.title = title;
+        this.apiParam = apiParam;
+    }
 
     /*
         example for a valid location
@@ -22,7 +53,9 @@
 
         var locationName = $("#locationName").val();
         var fieldName = $("#fieldName").val();
-        var currentLocation  = {"locationName": locationName, "fieldName":fieldName};
+        var stackexSite = $("#stackexSite option:selected").text();
+        var stackexParam = $("#stackexSite").val();
+        var currentLocation  = {"locationName": locationName, "fieldName":fieldName, "siteName":stackexSite, "siteParam":stackexParam};
         var searchURL = 'http://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + currentLocation.locationName;
         
         $.getJSON(searchURL, function(data){
@@ -76,7 +109,7 @@
         locations.forEach(function(location){
 
             var node = document.createElement("LI");
-            var textNode = document.createTextNode(location.locationName + ", " + location.fieldName);
+            var textNode = document.createTextNode(location.locationName + ", " + location.fieldName + ", " + location.siteName);
             var att = document.createAttribute("id");
             att.value = location.locationName;
             var classAtt = document.createAttribute("class");

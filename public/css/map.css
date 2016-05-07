@@ -5,12 +5,12 @@
 
 .mapLabels{
     display: inline-block;
-    width: 120px;
+    width: 140px;
     margin: 2px 0;
 }
 
 .mapInput{
-    width: 200px;
+    width: 207px;
 }
 
 #addAddress{
