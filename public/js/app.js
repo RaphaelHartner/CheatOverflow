@@ -1,91 +1,132 @@
-window.onload = function(){
-	loadQuestions();
-	startTimer();
+window.onload = function () {
+    loadQuestions();
+    loadCurrentForum();
+    document.getElementById("searchStackExchange").addEventListener("click", loadSearchedQuestions);
+    startTimer();
 };
 
+//$("#searchStackExchange").on("click", loadSearchedQuestions);
 
-function startTimer(){
-	var timer = setInterval(loadQuestions, 10000);
+function startTimer() {
+    var timer = setInterval(loadQuestions, 10000);
 }
 
 //could have been done in a webworker, but we didn't manage to run webworkers :(
-function loadQuestions(){
-	console.log("lade Fragen");
-	loadJSONQuestions();
-	loadJavaScriptQuestions();
-	loadHTMLQuestions();	
+function loadQuestions() {
+    console.log("lade Fragen");
+    loadJSONQuestions();
+    loadJavaScriptQuestions();
+    loadHTMLQuestions();
+}
+
+function loadCurrentForum() {
+    var storage = localStorage["locations"];
+    if (storage == null) {
+        return;
+    }
+    var locations = JSON.parse(storage);
+    document.getElementById("currentForum").innerHTML = locations[0].siteName;
+}
+
+function loadSearchedQuestions() {
+
+    var searchParameter = document.getElementById("searchParam").value;
+
+    var storage = localStorage["locations"];
+    if (storage == null) {
+        return;
+    }
+    var locations = JSON.parse(storage);
+
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&answers=1&title="+ searchParameter +"&site=" + locations[0].siteParam + "&key=bF8kysNL8Z2W7K5llHJgGg((", true);
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status < 300)) {
+
+            var questions = [];
+            var items = JSON.parse(xhttp.responseText).items;
+            for (var i = 0; i < 10; i++) {
+                questions.push(new Question(items[i].question_id, items[i].title, items[i].link));
+            }
+
+            document.getElementById("QuestionsFound").innerHTML = "";
+            questions.forEach(function (question) {
+                document.getElementById("QuestionsFound").innerHTML += question.toString();
+            });
+        }
+    };
+    xhttp.send();
 }
 
 function loadJSONQuestions() {
-	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged=json&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
-	xhttp.onreadystatechange = function() { 
-		if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status <300)) {
-			
-			var questions = [];
-			var items = JSON.parse(xhttp.responseText).items;
-			for (var i = 0; i < 5; i++)
-			{
-				questions.push(new Question(items[i].question_id, items[i].title, items[i].link));
-			}
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged=json&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status < 300)) {
 
-			document.getElementById("resentJSONquestions").innerHTML = "";
-			questions.forEach(function(question) {
-				document.getElementById("resentJSONquestions").innerHTML += question.toString();
-			});
-		}
-	};	
-	xhttp.send();
+            var questions = [];
+            var items = JSON.parse(xhttp.responseText).items;
+            for (var i = 0; i < 5; i++) {
+                questions.push(new Question(items[i].question_id, items[i].title, items[i].link));
+            }
+
+            document.getElementById("resentJSONquestions").innerHTML = "";
+            questions.forEach(function (question) {
+                document.getElementById("resentJSONquestions").innerHTML += question.toString();
+            });
+        }
+    };
+    xhttp.send();
 }
 
 function loadJavaScriptQuestions() {
-	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged=javascript&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
-	xhttp.onreadystatechange = function() { 
-		if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status <300)) {
-			var questions = [];
-			var items = JSON.parse(xhttp.responseText).items;
-			for (var i = 0; i < 5; i++)
-			{
-				questions.push(new Question(items[i].question_id, items[i].title, items[i].link));
-			}
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged=javascript&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status < 300)) {
+            var questions = [];
+            var items = JSON.parse(xhttp.responseText).items;
+            for (var i = 0; i < 5; i++) {
+                questions.push(new Question(items[i].question_id, items[i].title, items[i].link));
+            }
 
-			document.getElementById("resentJavaScriptQuestions").innerHTML = "";
-			questions.forEach(function(question) {
-				document.getElementById("resentJavaScriptQuestions").innerHTML += question.toString();
-			});
-		}
-	};	
-	xhttp.send();
+            document.getElementById("resentJavaScriptQuestions").innerHTML = "";
+            questions.forEach(function (question) {
+                document.getElementById("resentJavaScriptQuestions").innerHTML += question.toString();
+            });
+        }
+    };
+    xhttp.send();
 }
 
 function loadHTMLQuestions() {
-	var xhttp = new XMLHttpRequest();
-	xhttp.open("GET", "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged=html5&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
-	xhttp.onreadystatechange = function() { 
-		if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status <300)) {
-			var questions = [];
-			var items = JSON.parse(xhttp.responseText).items;
-			for (var i = 0; i < 5; i++)
-			{
-				questions.push(new Question(items[i].question_id, items[i].title, items[i].link));
-			}
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "https://api.stackexchange.com/2.2/search?order=desc&sort=activity&tagged=html5&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status < 300)) {
+            var questions = [];
+            var items = JSON.parse(xhttp.responseText).items;
+            for (var i = 0; i < 5; i++) {
+                questions.push(new Question(items[i].question_id, items[i].title, items[i].link));
+            }
 
-			document.getElementById("resentHTMLquestions").innerHTML = "";
-			questions.forEach(function(question) {
-				document.getElementById("resentHTMLquestions").innerHTML += question.toString();
-			});
-		}
-	};	
-	xhttp.send();
+            document.getElementById("resentHTMLquestions").innerHTML = "";
+            questions.forEach(function (question) {
+                document.getElementById("resentHTMLquestions").innerHTML += question.toString();
+            });
+        }
+    };
+    xhttp.send();
 }
 
 function Question(id, title, link) {
-	this.link = link;
-	this.title = title;
-	this.id = id;
+    this.link = link;
+    this.title = title;
+    this.id = id;
 }
 
-Question.prototype.toString = function() {
-	return this.title + ": " + "  <a href=\"" + this.link + "\" target=\"_blank\">zur Frage</a>" + "<br />";
+Question.prototype.toString = function () {
+    return this.title + ": " + "  <a href=\"" + this.link + "\" target=\"_blank\">zur Frage</a>" + "<br />";
 };
+

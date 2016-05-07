@@ -31,26 +31,39 @@
 			</li>
 		</ul>
 	</nav>
-	<main class="row">
-		<h2>Recent activities in StackOverflow</h2>
-		<section  class="col col1of3 col1of2xs colxs">
-			<h4>
-				The 5 most recent Questions about JSON:
-			</h4>
-			<section id="resentJSONquestions"></section>
-		</section>
-		<section class="col col1of3 col1of2xs colxs">
-			<h4>
-				The 5 most recent Questions about JavaScript:
-			</h4>
-			<section id="resentJavaScriptQuestions"></section>
-		</section>
-		<section class="col col1of3 col2of2xs colxs">
-			<h4>
-				The 5 most recent Questions about HTML5:
-			</h4>
-			<section id="resentHTMLquestions"></section>
-		</section>
+	<main>
+		<article class ="row">
+            <h2>Recent activities in StackOverflow</h2>
+            <section  class="col col1of3 col1of2xs colxs">
+                <h4>
+                    The 5 most recent Questions about JSON:
+                </h4>
+                <section id="resentJSONquestions"></section>
+            </section>
+            <section class="col col1of3 col1of2xs colxs">
+                <h4>
+                    The 5 most recent Questions about JavaScript:
+                </h4>
+                <section id="resentJavaScriptQuestions"></section>
+            </section>
+            <section class="col col1of3 col2of2xs colxs">
+                <h4>
+                    The 5 most recent Questions about HTML5:
+                </h4>
+                <section id="resentHTMLquestions"></section>
+            </section>
+        </article>
+		<article class="row">
+            <h2>Search</h2>
+            <section class="col col1of3 col1of2xs colxs">
+                <label for="searchParam">Search Question: </label><input id="searchParam" type="text" />
+                in: <span id="currentForum">&nbsp;</span> <br />
+                <input id="searchStackExchange" type="button" value="Search">
+            </section>
+            <section class="col col2of3 col1of2xs colxs" id="QuestionsFound">
+                No Questions found...
+            </section>
+        </article>
 	</main>
     <footer>
         copyrights by AdeHar
