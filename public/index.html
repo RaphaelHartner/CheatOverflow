@@ -5,6 +5,7 @@
     <title>CheatOverflow</title>
     <link rel="stylesheet" type="text/css" href="css/main-style.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive-style.css">
+    <script type="text/javascript" src="http://www.openlayers.org/api/OpenLayers.js" defer></script>
 	<script language="javascript" type="text/javascript" src="js/app.js" defer></script>
     <script src="js/lib/jquery-2.2.1.min.js" defer></script>
     <script src="js/animation/header-animation.js" defer></script>
@@ -57,8 +58,10 @@
             <h2>Search</h2>
             <section class="col col1of3 col1of2xs colxs">
                 <label for="searchParam">Search Question: </label><input id="searchParam" type="text" />
-                in: <span id="currentForum">&nbsp;</span> <br />
-                <input id="searchStackExchange" type="button" value="Search">
+                in: <span id="currentForum">StackOverflow</span> <br />
+                <input id="searchStackExchange" type="button" value="Search"><br />
+                Note: By default the forum deposited to the nearest location is searched. If no forum is saved in storage then StackOverflow is searched. You can save a forum to a location here:
+                <a href="html/map.html" target="_self">Map</a>
             </section>
             <section class="col col2of3 col1of2xs colxs" id="QuestionsFound">
                 No Questions found...

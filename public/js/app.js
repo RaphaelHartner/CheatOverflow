@@ -1,11 +1,11 @@
 window.onload = function () {
     loadQuestions();
-    loadCurrentForum();
+    navigator.geolocation.getCurrentPosition(getNearestLocationFromStorage);
     document.getElementById("searchStackExchange").addEventListener("click", loadSearchedQuestions);
     startTimer();
 };
 
-//$("#searchStackExchange").on("click", loadSearchedQuestions);
+var stackexForumParam = 'stackoverflow';
 
 function startTimer() {
     var timer = setInterval(loadQuestions, 10000);
@@ -19,13 +19,37 @@ function loadQuestions() {
     loadHTMLQuestions();
 }
 
-function loadCurrentForum() {
+function getNearestLocationFromStorage(position) {
+
+    var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+    var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+    var convertedPosition = new OpenLayers.LonLat(position.coords.longitude, position.coords.latitude).transform( fromProjection, toProjection);
+
     var storage = localStorage["locations"];
     if (storage == null) {
         return;
     }
     var locations = JSON.parse(storage);
-    document.getElementById("currentForum").innerHTML = locations[0].siteName;
+
+    var nearest = 999999999;
+
+    locations.forEach(function (location){
+
+        //distance long
+        var distlong = Math.abs(convertedPosition.lon - location.position.lon);
+
+        //distance lat
+        var distlat = Math.abs(convertedPosition.lat - location.position.lat);
+
+        var distance = distlong + distlat;
+
+        if (distance < nearest){
+
+            nearest = distance;
+            stackexForumParam = location.siteParam;
+            document.getElementById("currentForum").innerHTML = location.siteName;
+        }
+    });
 }
 
 function loadSearchedQuestions() {
@@ -40,7 +64,7 @@ function loadSearchedQuestions() {
 
     var xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&answers=1&title="+ searchParameter +"&site=" + locations[0].siteParam + "&key=bF8kysNL8Z2W7K5llHJgGg((", true);
+    xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&answers=1&title="+ searchParameter +"&site=" + stackexForumParam + "&key=bF8kysNL8Z2W7K5llHJgGg((", true);
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status < 300)) {
 
