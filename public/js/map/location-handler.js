@@ -42,6 +42,7 @@
         example for a valid location
             locationName="FH Joanneum Kapfenberg",
             fieldName="IT"
+            StackExchange Site="Stack Overflow"
      */
     function saveCurrentLocation(){
 
@@ -60,19 +61,23 @@
         
         $.getJSON(searchURL, function(data){
 
-            var position = data[0];
-            var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-            var toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
-            position = new OpenLayers.LonLat(position.lon, position.lat).transform( fromProjection, toProjection);
+            if(data.length == 0){
+                alert("Unable to find requested location '" + locationName + "'!");
+            }
+            else {
 
-            currentLocation["position"] = position;
-            locations.push(currentLocation);
+                var position = data[0];
+                var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
+                var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+                position = new OpenLayers.LonLat(position.lon, position.lat).transform(fromProjection, toProjection);
 
-            localStorage["locations"] = JSON.stringify(locations); //save current location
-            console.log("Saved location: " + JSON.stringify(currentLocation));
-            refreshLocationList();
+                currentLocation["position"] = position;
+                locations.push(currentLocation);
 
-            return data;
+                localStorage["locations"] = JSON.stringify(locations); //save current location
+                console.log("Saved location: " + JSON.stringify(currentLocation));
+                refreshLocationList();
+            }
         });
     }
 

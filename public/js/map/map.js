@@ -31,7 +31,7 @@
 
         setMarkers(convertedPosition);
 
-        // until now --> I (Hartner) can't figure out why i have to set the center twice
+        // todo: until now --> can't figure out why we have to set the center twice
         map.setCenter(convertedPosition, zoom );
         addPopup({"locationName":"You are here", "position": convertedPosition});
         setLocationMarkers();
