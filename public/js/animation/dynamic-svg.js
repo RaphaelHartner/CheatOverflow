@@ -21,8 +21,5 @@ function startTransformation(){
 }
 
 function transformSVG(element, matrix) {
-
     element.setAttribute('transform', matrix.toString());
 }
-
-
