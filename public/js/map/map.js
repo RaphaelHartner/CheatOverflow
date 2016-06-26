@@ -16,10 +16,10 @@
     }
 
     function showCurrentLocation(){
-        navigator.geolocation.getCurrentPosition(setCurrentLocatinMarker);
+        navigator.geolocation.getCurrentPosition(setCurrentLocationMarker);
     }
 
-    function setCurrentLocatinMarker(position){
+    function setCurrentLocationMarker(position){
 
         var mapnik = new OpenLayers.Layer.OSM();
         map.addLayer(mapnik);
