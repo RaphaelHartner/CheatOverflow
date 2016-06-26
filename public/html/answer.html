@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Answer</title>
+    <link rel="stylesheet" type="text/css" href="../css/main-style.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive-style.css">
+    <script src="../js/answer.js" defer></script>
+    <script src="../js/lib/jquery-2.2.1.min.js" defer></script>
+    <script src="../js/animation/header-animation.js" defer></script>
+    <script src="../js/shake/shake.js" defer></script>
+    <script src="../js/shake/shake-me-home.js" defer></script>
+</head>
+<body>
+    <header>
+        <canvas id="header_canvas"></canvas>
+    </header>
+    <nav class="vertical-nav dropdown">
+        <button class="dropbtn">Menü</button>
+        <ul id="menu" class="dropdown-content">
+            <li>
+                <a href="../index.html" target="_self">Homepage</a>
+            </li>
+            <li>
+                <a href="about_us.html" target="_self">About Us</a>
+            </li>
+            <li>
+                <a href="about_stackoverflow.html" target="_self">About Stackoverflow</a>
+            </li>
+            <li>
+                <a href="map.html" target="_self">Map</a>
+            </li>
+        </ul>
+    </nav>
+<main class="row">
+    <section class="col">
+        <h2>Question:</h2>
+        <h4 id="StackExchangeQuestionTitle">Question</h4>
+        <p id="StackExchangeQuestionText">
+            Answer
+        </p>
+        <h3>Answers:</h3>
+        <section id="StackExchangeAnswers"></section>
+    </section>
+</main>
+<footer>
+    copyrights by AdeHar
+</footer>
+</body>
+</html>

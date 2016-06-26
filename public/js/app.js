@@ -8,7 +8,7 @@ window.onload = function () {
 var stackexForumParam = 'stackoverflow';
 
 function startTimer() {
-    var timer = setInterval(loadQuestions, 10000);
+    setInterval(loadQuestions, 10000);
 }
 
 //could have been done in a webworker, but we didn't manage to run webworkers :(
@@ -71,7 +71,7 @@ function loadSearchedQuestions() {
             var questions = [];
             var items = JSON.parse(xhttp.responseText).items;
             for (var i = 0; i < 10; i++) {
-                questions.push(new Question(items[i].question_id, items[i].title, items[i].link));
+                questions.push(new Question(items[i].question_id, items[i].title, items[i].link, stackexForumParam));
             }
 
             document.getElementById("QuestionsFound").innerHTML = "";
@@ -92,7 +92,7 @@ function loadJSONQuestions() {
             var questions = [];
             var items = JSON.parse(xhttp.responseText).items;
             for (var i = 0; i < 5; i++) {
-                questions.push(new Question(items[i].question_id, items[i].title, items[i].link));
+                questions.push(new Question(items[i].question_id, items[i].title, items[i].link, 'stackoverflow'));
             }
 
             document.getElementById("resentJSONquestions").innerHTML = "";
@@ -112,7 +112,7 @@ function loadJavaScriptQuestions() {
             var questions = [];
             var items = JSON.parse(xhttp.responseText).items;
             for (var i = 0; i < 5; i++) {
-                questions.push(new Question(items[i].question_id, items[i].title, items[i].link));
+                questions.push(new Question(items[i].question_id, items[i].title, items[i].link, 'stackoverflow'));
             }
 
             document.getElementById("resentJavaScriptQuestions").innerHTML = "";
@@ -132,7 +132,7 @@ function loadHTMLQuestions() {
             var questions = [];
             var items = JSON.parse(xhttp.responseText).items;
             for (var i = 0; i < 5; i++) {
-                questions.push(new Question(items[i].question_id, items[i].title, items[i].link));
+                questions.push(new Question(items[i].question_id, items[i].title, items[i].link, 'stackoverflow'));
             }
 
             document.getElementById("resentHTMLquestions").innerHTML = "";
@@ -144,13 +144,15 @@ function loadHTMLQuestions() {
     xhttp.send();
 }
 
-function Question(id, title, link) {
+function Question(id, title, link, stackexParam) {
     this.link = link;
     this.title = title;
     this.id = id;
+    this.stackexParam = stackexParam;
 }
 
 Question.prototype.toString = function () {
-    return this.title + ": " + "  <a href=\"" + this.link + "\" target=\"_blank\">zur Frage</a>" + "<br />";
+    return this.title + ": " + "  <a href=\"html/answer.html?id=" + this.id + "&site=" + this.stackexParam + "\" target=\"_self\">zur Frage</a>" + "<br />";
+    //return this.title + ": " + "  <a href=\"" + this.link + "\" target=\"_blank\">zur Frage</a>" + "<br />";
 };
 
