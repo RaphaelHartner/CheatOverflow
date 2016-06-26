@@ -153,6 +153,5 @@ function Question(id, title, link, stackexParam) {
 
 Question.prototype.toString = function () {
     return this.title + ": " + "  <a href=\"html/answer.html?id=" + this.id + "&site=" + this.stackexParam + "\" target=\"_self\">zur Frage</a>" + "<br />";
-    //return this.title + ": " + "  <a href=\"" + this.link + "\" target=\"_blank\">zur Frage</a>" + "<br />";
 };
 
