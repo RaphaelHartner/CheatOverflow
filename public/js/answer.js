@@ -21,6 +21,7 @@ function loadQuestion(id, stackexsite)
 {
     var xhttp = new XMLHttpRequest();
 
+    //&filter=!-*f(6rc.(Xr5&key=bF8kysNL8Z2W7K5llHJgGg((", true) --> to get the format of the answers
     xhttp.open("GET", "https://api.stackexchange.com/2.2/questions/"+ id + "?order=desc&sort=activity&site=" + stackexsite +"&filter=!-*f(6rc.(Xr5&key=bF8kysNL8Z2W7K5llHJgGg((", true);
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status < 300)) {
@@ -28,7 +29,7 @@ function loadQuestion(id, stackexsite)
             var items = JSON.parse(xhttp.responseText).items;
 
             document.getElementById("StackExchangeQuestionTitle").innerHTML = items[0].title;
-            document.getElementById("StackExchangeQuestionText").innerHTML = items[0].body;
+            document.getElementById("StackExchangeQuestionText").innerHTML = items[0].body; //content incl. format
 
             var answers = items[0].answers;
             answers.forEach(function(answer){
@@ -36,7 +37,7 @@ function loadQuestion(id, stackexsite)
                     document.getElementById("StackExchangeAnswers").innerHTML += "<article class=\"acceptedAnswer\">"+ answer.body + "</article><hr />";
                 }
                 else {
-                    document.getElementById("StackExchangeAnswers").innerHTML += "<p>" + answer.body + "</p><hr />";
+                    document.getElementById("StackExchangeAnswers").innerHTML += "<p>" + answer.body + "</p><hr />"; //content incl. format
                 }
             });
         }
