@@ -1,8 +1,8 @@
 Read me for the incredible CheatOverflow-App
 
-CheatOverflow is a web-app, which gives you the opportunity to easily cheat on every test ;-)
-First of all, on the homepage there are three columns(desktop-version) where you can find the most recent
-questions on stakeoverflow about JSON, JavaScript and HTML5.
+CheatOverflow is a web-app, which gives you the opportunity to easily cheat on every IT-related test ;-)
+First of all, on the homepage there are three(depends on the device) columns where you can find the most
+recent questions on stakeoverflow about JSON, JavaScript and HTML5.
 
 You are also able to search for a specific term in the search box. If there are no locations saved, Stackoverflow is
 used as forum. On the other hand if you have specified a location, the nearest to your current position
