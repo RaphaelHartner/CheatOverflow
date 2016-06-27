@@ -1,5 +1,9 @@
+#OpenLayers_Map_2_OpenLayers_ViewPort{
+    margin:20px;
+}
+
 #map{
-    width: 80%;
+    width: 90%;
     height: 500px;
 }
 
