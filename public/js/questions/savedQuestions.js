@@ -31,7 +31,7 @@ function deleteQuestion(id){
     var questions = JSON.parse(localStorage["savedQuestions"]);
     questions.splice(index, 1);
     localStorage["savedQuestions"] = JSON.stringify(questions);
-    window.location.reload(false);
+    window.location.reload(false); //refreshes the page without getting it from the server 
 }
 
 function getQuestionIndex(id){
