@@ -1,3 +1,8 @@
+/**
+ * Created by Adelmann & Hartner
+ */
+"use strict";
+
 window.onload = function () {
     var id = getQuestionID();
     var stackexsite = getStackexSite();
@@ -8,16 +13,19 @@ window.onload = function () {
 //Question ID is in the URL in the GET-Parameter called "id"
 function getQuestionID() {
     var url = window.location.href;
-    var captured = /id=([^&]+)/.exec(url)[1];
-    return resultID = captured ? captured : '0'; //if no id is found, return 0
+    //var captured = /id=([^&]+)/.exec(url)[1];
+    return /id=([^&]+)/.exec(url)[1];
 }
 
+//return stackexchange-site --> parse URL
 function getStackexSite() {
     var url = window.location.href;
-    var captured = /site=([^&]+)/.exec(url)[1];
-    return result = captured ? captured : 'stackoverflow'; //if no site is found, use stackoverflow
+    //var captured = /site=([^&]+)/.exec(url)[1];
+    return /site=([^&]+)/.exec(url)[1];
 }
 
+//load requested question
+//if the question exists in the locale storage --> it won't be reloaded from stackexchange
 function loadQuestion(id, stackexsite)
 {
     var loadedFromLocalStorage = false;
@@ -78,5 +86,5 @@ function saveToLocalStorage(id, stackexsite) {
 
     savedQuestions.push(currentQuestion);
     localStorage["savedQuestions"] = JSON.stringify(savedQuestions);
-    alert("Frage für Offline-Verwendung gespeichert")
+    alert("Question successfully saved offline!")
 }

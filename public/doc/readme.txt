@@ -21,11 +21,8 @@ For specifying a new location, you need following information:
 locations will be stored locally.
 For deleting a location, select it by clicking on it and press the "Delete"-Button
 
+If you need offline-acces to questions you can save it by pressing the "save offline"-button
+in the detailview of the question("details"-link)
+You can find an overview of all saved questions in "Saved Questions"-Menu
 
-Testcases(Selenium IDE):
-    testing in firefox with selenium ide
-    clean environment(empty local storage) is required!
-    start with testcase 00_*****
-    be sure the "Base URL" in the Selenium IDE is set to the project folder
-
-
+test introduction --> testcases/test-readme.txt

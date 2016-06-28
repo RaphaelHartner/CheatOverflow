@@ -1,4 +1,7 @@
-// created by Hartner & Adelmann
+/**
+ * Created by Adelmann & Hartner
+ */
+"use strict";
 
 (function(){
     console.log("initialized address handler");

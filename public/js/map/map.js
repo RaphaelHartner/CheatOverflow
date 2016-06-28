@@ -1,7 +1,6 @@
 /**
  * Created by Adelmann & Hartner
  */
-
 'use strict';
 
 (function(){

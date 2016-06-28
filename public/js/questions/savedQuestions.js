@@ -1,8 +1,13 @@
+/**
+ * Created by Adelmann & Hartner
+ */
+"use strict";
+
 window.onload = function () {
     loadQuestions();
-    //document.getElementById("SaveQuestionToLocalStorage").addEventListener("click", function(){saveToLocalStorage(id, stackexsite)});
 };
 
+//load requested question
 function loadQuestions() {
     var savedQuestions = [];
     if(localStorage["savedQuestions"] != null){
@@ -34,6 +39,8 @@ function deleteQuestion(id){
     window.location.reload(false); //refreshes the page without getting it from the server 
 }
 
+//returns the the index of the requested id(local storage)
+//if the id doesn't exist the function returns -1
 function getQuestionIndex(id){
 
     var savedQuestions = localStorage["savedQuestions"];

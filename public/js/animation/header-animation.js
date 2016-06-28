@@ -1,6 +1,7 @@
 /**
- * Created by student on 3/10/16.
+ * Created by Adelmann & Hartner
  */
+"use strict";
 
 var canvas = $("#header_canvas")[0];//document.querySelector("canvas");
 var ctx = canvas.getContext("2d");
@@ -11,8 +12,8 @@ var txt = "Cheat-Overflow";
 var x = 0;
 var i = 0;
 
+//explanation of "requestAnimationFrame" see: https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
 function animateHeader() {
-    ctx.clearRect(0, 0, canvas.height, canvas.width);
     ctx.setLineDash([dashLen - dashOffset, dashOffset - speed]); // create a long dash mask
     dashOffset -= speed;                                         // reduce dash length
     ctx.strokeText(txt[i], x, 30);                               // stroke letter

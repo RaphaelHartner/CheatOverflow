@@ -1,3 +1,8 @@
+/**
+ * Created by Adelmann & Hartner
+ */
+"use strict";
+
 function initializeShakerListener(){
 
     var shakeEvent = new Shake({

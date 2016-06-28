@@ -1,3 +1,8 @@
+/**
+ * Created by Adelmann & Hartner
+ */
+"use strict";
+
 $(document).ready(startTransformation());
 
 function TransformMatrix(a, b, c, d, e, f) {

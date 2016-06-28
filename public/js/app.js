@@ -1,3 +1,8 @@
+/**
+ * Created by Adelmann & Hartner
+ */
+"use strict";
+
 window.onload = function () {
     loadQuestions();
     navigator.geolocation.getCurrentPosition(getNearestLocationFromStorage);
@@ -152,6 +157,6 @@ function Question(id, title, link, stackexParam) {
 }
 
 Question.prototype.toString = function () {
-    return this.title + ": " + "  <a href=\"html/answer.html?id=" + this.id + "&site=" + this.stackexParam + "\" target=\"_self\">zur Frage</a>" + "<br />";
+    return this.title + ": " + "  <a href=\"html/answer.html?id=" + this.id + "&site=" + this.stackexParam + "\" target=\"_self\">Details</a>" + "<br />";
 };
 
