@@ -78,4 +78,5 @@ function saveToLocalStorage(id, stackexsite) {
 
     savedQuestions.push(currentQuestion);
     localStorage["savedQuestions"] = JSON.stringify(savedQuestions);
+    alert("Frage für Offline-Verwendung gespeichert")
 }
