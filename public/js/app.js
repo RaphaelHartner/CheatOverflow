@@ -4,8 +4,8 @@
 "use strict";
 
 window.onload = function () {
-    loadQuestions();
     navigator.geolocation.getCurrentPosition(getNearestLocationFromStorage);
+    loadQuestions();
     document.getElementById("searchStackExchange").addEventListener("click", loadSearchedQuestions);
     startTimer();
 };
@@ -69,7 +69,7 @@ function loadSearchedQuestions() {
 
     var xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&answers=1&title="+ searchParameter +"&site=" + stackexForumParam + "&key=bF8kysNL8Z2W7K5llHJgGg((", true);
+    xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?pagesize=10&order=desc&sort=activity&answers=1&title="+ searchParameter +"&site=" + stackexForumParam + "&key=bF8kysNL8Z2W7K5llHJgGg((", true);
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status < 300)) {
 
@@ -90,7 +90,7 @@ function loadSearchedQuestions() {
 
 function loadJSONQuestions() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&answers=1&tagged=json&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
+    xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?pagesize=5&order=desc&sort=activity&answers=1&tagged=json&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status < 300)) {
 
@@ -111,7 +111,7 @@ function loadJSONQuestions() {
 
 function loadJavaScriptQuestions() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&answers=1&tagged=javascript&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
+    xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?pagesize=5&order=desc&sort=activity&answers=1&tagged=javascript&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status < 300)) {
             var questions = [];
@@ -131,7 +131,7 @@ function loadJavaScriptQuestions() {
 
 function loadHTMLQuestions() {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?order=desc&sort=activity&answers=1&tagged=html5&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
+    xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?pagesize=5&order=desc&sort=activity&answers=1&tagged=html5&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && (xhttp.status >= 200 && xhttp.status < 300)) {
             var questions = [];
