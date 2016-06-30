@@ -40,6 +40,7 @@ function loadQuestion(id, stackexsite)
             document.getElementById("StackExchangeQuestionTitle").innerHTML = savedQuestions[i].questiontitle;
             document.getElementById("StackExchangeQuestionText").innerHTML = savedQuestions[i].question;
             document.getElementById("StackExchangeAnswers").innerHTML = savedQuestions[i].answers;
+            document.getElementById("SaveQuestionToLocalStorage").style.visibility = 'hidden';
             loadedFromLocalStorage = true;
             break;
         }

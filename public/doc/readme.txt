@@ -25,7 +25,8 @@ If you need offline-acces to questions you can save it by pressing the "save off
 in the detailview of the question("details"-link)
 You can find an overview of all saved questions in "Saved Questions"-Menu
 
-test introduction --> testcases/test-readme.txt
-
 Minified (or "Uglified") JavaScript files were made whit UglifyJS (https://marijnhaverbeke.nl/uglifyjs)
 Minified (or "Compressed") CSS files were made with CSS Compressor (http://csscompressor.com/)
+
+
+test introduction --> testcases/test-readme.txt

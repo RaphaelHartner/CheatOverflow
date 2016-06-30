@@ -100,7 +100,13 @@
         }
 
         var locations = JSON.parse(localStorage["locations"]);
-        locations.splice(locations.indexOf(location), 1);
+
+
+        var index = getLocationIndex(locationName);
+        if(index >= 0) {
+            locations.splice(index, 1);
+        }
+
         localStorage["locations"] = JSON.stringify(locations);
         refreshLocationList();
     }
@@ -149,13 +155,31 @@
             return l;
         }
 
-        var locations = JSON.parse(storage);
-        locations.forEach(function(location){
-            if(location.locationName === name){
-                l = location;
-            }
-        });
+
+        var index = getLocationIndex(name);
+        if (index >= 0){
+            var locations = JSON.parse(storage);
+            l = locations[index];
+        }
+
         return l;
+    }
+
+    function getLocationIndex(name){
+        var storage = localStorage["locations"];
+        var index = -1;
+
+        if(storage ==null) {
+            return index;
+        }
+
+        var locations = JSON.parse(storage);
+        for (var i = 0; i < locations.length; i++) {
+            if(locations[i].locationName === name){
+                index = i;
+            }
+        }
+        return index;
     }
 }());
 
