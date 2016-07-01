@@ -13,15 +13,13 @@ window.onload = function () {
 //Question ID is in the URL in the GET-Parameter called "id"
 function getQuestionID() {
     var url = window.location.href;
-    //var captured = /id=([^&]+)/.exec(url)[1];
-    return /id=([^&]+)/.exec(url)[1];
+    return /id=([^&]+)/.exec(url)[1]; //regex to get the question-id
 }
 
 //return stackexchange-site --> parse URL
 function getStackexSite() {
     var url = window.location.href;
-    //var captured = /site=([^&]+)/.exec(url)[1];
-    return /site=([^&]+)/.exec(url)[1];
+    return /site=([^&]+)/.exec(url)[1]; //regex to get the site-param
 }
 
 //load requested question
@@ -46,7 +44,7 @@ function loadQuestion(id, stackexsite)
         }
     }
 
-    if (!loadedFromLocalStorage) {
+    if (!loadedFromLocalStorage) { // if requested question isn't available in the local storage --> get it from the specific stackexhange-site
         var xhttp = new XMLHttpRequest();
 
         //&filter=!-*f(6rc.(Xr5&key=bF8kysNL8Z2W7K5llHJgGg((", true) --> to get the format of the answers
