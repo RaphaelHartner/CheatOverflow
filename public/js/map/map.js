@@ -31,9 +31,10 @@
 
         setMarkers(convertedPosition);
 
-        map.setCenter(convertedPosition, zoom );
+        map.setCenter(convertedPosition, zoom ); //the center has to be set twice, otherwise it won't work
         addPopup({"locationName":"You are here", "position": convertedPosition});
         setLocationMarkers();
+        map.setCenter(convertedPosition, zoom ); //the center has to be set twice
     }
 
     //add maker for each POI in the local storage
