@@ -15,9 +15,11 @@ function TransformMatrix(a, b, c, d, e, f) {
 }
 
 TransformMatrix.prototype.toString = function matrixToString() {
+    //specific format which is needed for svg transformation
     return  "matrix(" + this.a + ", " + this.b + ", " + this.c + ", " + this.d + ", " + this.e + ", " + this.f + ")";
 };
 
+//start timer for transformation
 function startTransformation(){
 
     window.setTimeout(transformSVG, 3000, document.getElementById("svg_line3"), new TransformMatrix(1, 0.3, -0.3, 1, 30, -40));
@@ -25,6 +27,7 @@ function startTransformation(){
     window.setTimeout(transformSVG, 1000, document.getElementById("svg_line5"), new TransformMatrix(0.6, 0.8, -0.8, 0.6, 160, -70));
 }
 
+//executes transformation
 function transformSVG(element, matrix) {
     element.setAttribute('transform', matrix.toString());
 }

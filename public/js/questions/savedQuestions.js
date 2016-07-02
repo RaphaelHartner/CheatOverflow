@@ -21,6 +21,7 @@ function loadQuestions() {
     });
 }
 
+// deletes question with the given id from the local storage
 function deleteQuestion(id){
 
     var savedQuestions = localStorage["savedQuestions"];

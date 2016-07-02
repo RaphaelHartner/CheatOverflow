@@ -36,7 +36,7 @@ function getNearestLocationFromStorage(position) {
     }
     var locations = JSON.parse(storage);
 
-    var nearest = 999999999;
+    var nearest = 999999999; // to be sure if any location is saved --> it will be choosed as the nearest
 
     locations.forEach(function (location){
 
@@ -57,6 +57,7 @@ function getNearestLocationFromStorage(position) {
     });
 }
 
+// get the most recent question for the requested search-term and display the 10 most recent questions
 function loadSearchedQuestions() {
 
     var searchParameter = document.getElementById("searchParam").value;
@@ -88,6 +89,8 @@ function loadSearchedQuestions() {
     xhttp.send();
 }
 
+
+// load the 5 most recent question from stackoverlow which are about JSON
 function loadJSONQuestions() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?pagesize=5&order=desc&sort=activity&answers=1&tagged=json&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
@@ -109,6 +112,7 @@ function loadJSONQuestions() {
     xhttp.send();
 }
 
+// load the 5 most recent question from stackoverlow which are about JavaScript
 function loadJavaScriptQuestions() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?pagesize=5&order=desc&sort=activity&answers=1&tagged=javascript&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);
@@ -129,6 +133,7 @@ function loadJavaScriptQuestions() {
     xhttp.send();
 }
 
+// load the 5 most recent question from stackoverlow which are about HTML5
 function loadHTMLQuestions() {
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", "https://api.stackexchange.com/2.2/search/advanced?pagesize=5&order=desc&sort=activity&answers=1&tagged=html5&site=stackoverflow&key=bF8kysNL8Z2W7K5llHJgGg((", true);

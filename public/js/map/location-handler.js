@@ -12,6 +12,7 @@
     loadStackExchangeSites();
     refreshLocationList();
 
+    //get the main stackexchange-sites and add them to the stackexchange-sites dropdowns
     function loadStackExchangeSites() {
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", "https://api.stackexchange.com/2.2/sites?key=bF8kysNL8Z2W7K5llHJgGg((", false);
@@ -22,7 +23,7 @@
                 var items = JSON.parse(xhttp.responseText).items;
                 for (var i = 0; i < items.length; i++) {
 
-                    if(items[i].site_type == 'main_site') {
+                    if(items[i].site_type == 'main_site') { //display only the main stackexchange sites
                         seSites.push(new StackSite(items[i].name, items[i].api_site_parameter));
                     }
                 }
@@ -69,7 +70,7 @@
             }
             else {
 
-                var position = data[0];
+                var position = data[0]; //get the position form the response data
                 var fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
                 var toProjection = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
                 position = new OpenLayers.LonLat(position.lon, position.lat).transform(fromProjection, toProjection);
@@ -84,9 +85,9 @@
         });
     }
 
+    // if there are more than one locations with the same name
+    // only one of them will be deleted
     function deleteCurrentLocation(){
-        // if there are more than one locations with the same name
-        // only one of them will be deleted
 
         var storage =localStorage["locations"];
         if(storage == null){
@@ -100,7 +101,6 @@
         }
 
         var locations = JSON.parse(localStorage["locations"]);
-
 
         var index = getLocationIndex(locationName);
         if(index >= 0) {
@@ -146,6 +146,7 @@
         $("#fieldName").val(location.fieldName);
     });
 
+    //returns locationdata for the given name
     function getLocationByName(name){
 
         var storage = localStorage["locations"];
@@ -165,6 +166,7 @@
         return l;
     }
 
+    //returns the index of the given locationname in the localstorage(locations)
     function getLocationIndex(name){
         var storage = localStorage["locations"];
         var index = -1;
