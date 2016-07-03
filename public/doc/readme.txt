@@ -1,4 +1,4 @@
-Read me for the incredible CheatOverflow-App
+Read me for the incredible CheatOverflow-App by AdeHar (Adelmann & Hartner)
 
 CheatOverflow is a web-app, which gives you the opportunity to easily cheat on every IT-related test ;-)
 First of all, on the homepage there are three(depends on the device) columns where you can find the most
@@ -25,7 +25,20 @@ If you need offline-acces to questions you can save it by pressing the "save off
 in the detailview of the question("details"-link)
 You can find an overview of all saved questions in "Saved Questions"-Menu
 
-test introduction --> testcases/test-readme.txt
-
 Minified (or "Uglified") JavaScript files were made whit UglifyJS (https://marijnhaverbeke.nl/uglifyjs)
 Minified (or "Compressed") CSS files were made with CSS Compressor (http://csscompressor.com/)
+
+
+Test-Section:
+    Selenium IDE for Firefox needed:
+        https://addons.mozilla.org/de/firefox/addon/selenium-ide/
+
+    With the firefox add-on "firestorageplus", it is possible to manage the local storage manually
+        https://github.com/NickBelhomme/firestorageplus
+
+    Testcases(Selenium IDE):
+        testing in firefox with selenium ide
+        clean environment(empty local storage) is required!
+        open "TestSuite.html" with the Selenium IDE and start the tests
+        ATTENTION: set the BASE-URL of the Test-Suite on the current project-public-directory
+            For Example: "file:///D:/Development/04_WebStorm_Projects/CheatOverflow/public/"

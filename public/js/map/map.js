@@ -15,9 +15,10 @@
     }
 
     function showCurrentLocation(){
-        navigator.geolocation.getCurrentPosition(setCurrentLocationMarker);
+        navigator.geolocation.getCurrentPosition(setCurrentLocationMarker); //start request for current position
     }
 
+    //creates the map and sets the center to the given position (normally the current position)
     function setCurrentLocationMarker(position){
 
         var mapnik = new OpenLayers.Layer.OSM();
@@ -30,11 +31,13 @@
 
         setMarkers(convertedPosition);
 
-        map.setCenter(convertedPosition, zoom );
+        map.setCenter(convertedPosition, zoom ); //the center has to be set twice, otherwise it won't work
         addPopup({"locationName":"You are here", "position": convertedPosition});
         setLocationMarkers();
+        map.setCenter(convertedPosition, zoom ); //the center has to be set twice
     }
 
+    //add maker for each POI in the local storage
     function setLocationMarkers(){
         var storage = localStorage["locations"];
         if(storage == null){
@@ -51,7 +54,7 @@
     function setMarkers(position){
         
         var markers = new OpenLayers.Layer.Markers("Markers");
-        map.addLayer(markers);
+        map.addLayer(markers); //specify a layer for each marker
         markers.addMarker(new OpenLayers.Marker(position));
     }
 

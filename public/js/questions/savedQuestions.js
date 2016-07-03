@@ -16,11 +16,12 @@ function loadQuestions() {
 
     savedQuestions.forEach(function(question){
         document.getElementById("savedQuestions").innerHTML +=
-            (question.questiontitle + ": <a href=\"answer.html?id="+ question.id + "&site=" + question.stackexsite + "\">Zur Frage</a> " +
-            "<a href='#' onclick='deleteQuestion("+question.id +");return null;'>Löschen</a> <br/>");
+            (question.questiontitle + ": <a href=\"answer.html?id="+ question.id + "&site=" + question.stackexsite + "\">Details</a> " +
+            "<a href='#' onclick='deleteQuestion("+question.id +");return null;'>Delete</a> <br/>");
     });
 }
 
+// deletes question with the given id from the local storage
 function deleteQuestion(id){
 
     var savedQuestions = localStorage["savedQuestions"];

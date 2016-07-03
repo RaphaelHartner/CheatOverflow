@@ -3,6 +3,7 @@
  */
 "use strict";
 
+//show notification and vibrate if available and allowed
 function usageNotification() {
 
     navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
