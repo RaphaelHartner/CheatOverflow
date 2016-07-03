@@ -1,4 +1,4 @@
-Read me for the incredible CheatOverflow-App
+Read me for the incredible CheatOverflow-App by AdeHar (Adelmann & Hartner)
 
 CheatOverflow is a web-app, which gives you the opportunity to easily cheat on every IT-related test ;-)
 First of all, on the homepage there are three(depends on the device) columns where you can find the most
